@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-myColor {
+  background-color: mediumvioletred;
+}
+
+.mainHead {
+  font-family: "Urbanist";
+}
+
+.mainHead h1 {
+  font-weight: 600;
+  font-size: 48px;
+}
+
+.about {
+  width: 32rem;
+  background-color: rgb(200, 200, 200);
+  color: black;
+  text-align: left;
+  padding: 20px 10px 12px 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+.loginButton {
+  margin-top: 3rem;
+}
+
+.login {
+  color: black;
+  margin: auto;
+}
