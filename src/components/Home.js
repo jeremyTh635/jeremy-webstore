@@ -1,19 +1,22 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import photos from "./photos";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import Login from "./Login";
 
 function Home() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
   const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    navigate("/products");
+  }
 
   return (
     <div>
@@ -149,37 +152,7 @@ function Home() {
           <Col></Col>
         </Row>
       </Container>
-      <Modal className="login" show={show} onHide={handleClose}>
-        <Modal.Header style={{ justifyContent: "center" }}>
-          <Modal.Title>Login Here</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control type="text"></Form.Control>
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text"></Form.Control>
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text"></Form.Control>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email"></Form.Control>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password"></Form.Control>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer style={{ justifyContent: "center" }}>
-          <Button
-            variant="secondary"
-            type="submit"
-            style={{ textAlign: "center" }}
-            onClick={handleClose}
-          >
-            Submit
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Login show={show} handleClose={handleClose} navigate={navigate} />
     </div>
   );
 }

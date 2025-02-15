@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 function Header() {
+  const userName = useSelector(state => state.user.userName);
+  console.log(userName);
   return (
     <div>
       <Navbar expand="lg" bg="myColor" data-bs-theme="dark">
@@ -16,6 +19,9 @@ function Header() {
           </Nav>
         </Container>
       </Navbar>
+      <div>
+        <h3>Welcome:&nbsp;&nbsp;&nbsp;{userName}</h3>
+      </div>
     </div>
   );
 }

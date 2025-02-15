@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import shopState from "./shopState";
+import userState from "./userState";
+import productsState from "./productsState";
+import cartState from "./cartState";
 
-const store = configureStore({
+export default configureStore({
   reducer: {
-    shop: shopState,
+    user: userState,
+    products: productsState,
+    cart: cartState,
   },
 });
-
-export default store;

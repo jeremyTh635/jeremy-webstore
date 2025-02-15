@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import addItem from "../store/cartState";
 import photos from "./photos";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -6,6 +8,12 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function Products() {
+  const state = useSelector((state) => state.products)
+  const dispatch = useDispatch();
+
+  const handleAddItem = (id) => {
+    dispatch(addItem(id))
+  }
   return (
     <div>
       <Container style={{ marginLeft: "150px", marginRight: "auto" }}>
@@ -29,7 +37,7 @@ function Products() {
               </Card.Text>
               <Card.Text>Year:&nbsp;&nbsp;{item.year}</Card.Text>
               <Card.Subtitle>£{item.price}</Card.Subtitle>
-              <Button variant="dark">Add to Cart</Button>
+              <Button variant="dark" onClick={() => {handleAddItem(item.id)}}>Add to Cart</Button>
             </Card>
           ))}
         </Row>
