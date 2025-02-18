@@ -2,20 +2,14 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  updateFirstName,
-  updateLastName,
-  updateUserName,
-  updateEmail,
-  updatePassword,
- } from "../store/userState";
+import { loginUser } from "../store/userState";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const Login = ({ show, handleClose, navigate }) => {
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.user);
 
   const formik = useFormik({
     initialValues: {
@@ -25,6 +19,7 @@ const Login = ({ show, handleClose, navigate }) => {
       email: "",
       password: "",
     },
+
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(15, "Must be 15 characters or less")
@@ -46,8 +41,15 @@ const Login = ({ show, handleClose, navigate }) => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values);
+      const payload = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        userName: values.userName,
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(loginUser(payload));
+      console.log(state);
     },
   });
 
@@ -129,17 +131,17 @@ const Login = ({ show, handleClose, navigate }) => {
               {formik.touched.firstName && formik.errors.password ? (
                 <div>{formik.errors.password}</div>
               ) : null}
+              <Button
+                variant="secondary"
+                type="submit"
+                style={{ textAlign: "center" }}
+              >
+                Submit
+              </Button>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer style={{ justifyContent: "center" }}>
-          <Button
-            variant="secondary"
-            type="submit"
-            style={{ textAlign: "center" }}
-          >
-            Submit
-          </Button>
           <Button variant="dark" onClick={handleClose}>
             Close
           </Button>

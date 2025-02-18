@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import addItem from "../store/cartState";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../store/cartState";
 import photos from "./photos";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -8,11 +9,13 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function Products() {
-  const state = useSelector((state) => state.products)
+  // const state = useSelector((state) => state.cart)
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleAddItem = (id) => {
-    dispatch(addItem(id))
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item))
+    navigate("/cart");
   }
   return (
     <div>
@@ -37,7 +40,7 @@ function Products() {
               </Card.Text>
               <Card.Text>Year:&nbsp;&nbsp;{item.year}</Card.Text>
               <Card.Subtitle>£{item.price}</Card.Subtitle>
-              <Button variant="dark" onClick={() => {handleAddItem(item.id)}}>Add to Cart</Button>
+              <Button variant="dark" onClick={() => handleAddToCart(item)}>Add to Cart</Button>
             </Card>
           ))}
         </Row>

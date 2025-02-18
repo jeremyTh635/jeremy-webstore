@@ -5,7 +5,8 @@ const photos = [
     photographer: "Karina Kneller",
     title: "Arabian Finch",
     year: "2019",
-    price: 225
+    price: 225,
+    quantity: 0
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ const photos = [
     photographer: "Mechthild Lewerenz",
     title: "Brighton 2024",
     year: "2024",
-    price: 195
+    price: 195,
+    quantity: 0
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ const photos = [
     photographer: "Adomas Kazlauskas",
     title: "Castle Moat",
     year: "2020",
-    price: 375
+    price: 375,
+    quantity: 0
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ const photos = [
     photographer: "Krisztofer Sas",
     title: "Desert Ruins",
     year: "2017",
-    price: 380
+    price: 380,
+    quantity: 0
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ const photos = [
     photographer: "Martin Tamm",
     title: "Door",
     year: "2017",
-    price: 295
+    price: 295,
+    quantity: 0
   },
   {
     id: 6,
@@ -45,7 +50,8 @@ const photos = [
     photographer: "Izei Gebara",
     title: "Untitled, 2020",
     year: "2020",
-    price: 390
+    price: 390,
+    quantity: 0
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ const photos = [
     photographer: "Kyou Miyajima",
     title: "Component #7",
     year: "2018",
-    price: 350
+    price: 350,
+    quantity: 0
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ const photos = [
     photographer: "Marco Mohren",
     title: "Dubai Marina #4",
     year: "2015",
-    price: 280
+    price: 280,
+    quantity: 0
   },
   {
     id: 9,
@@ -69,7 +77,8 @@ const photos = [
     photographer: "Mattis Kempf",
     title: "Zabeel Park, Dubai 2014",
     year: "2014",
-    price: 225
+    price: 225,
+    quantity: 0
   },
   {
     id: 10,
@@ -77,7 +86,8 @@ const photos = [
     photographer: "Melanie Everhart",
     title: "Habanero Chilli",
     year: "2019",
-    price: 300
+    price: 300,
+    quantity: 0
   },
   {
     id: 11,
@@ -85,7 +95,8 @@ const photos = [
     photographer: "Yeong-Ho Yoon",
     title: "Hamburg 2015",
     year: "2015",
-    price: 245
+    price: 245,
+    quantity: 0
   },
   {
     id: 12,
@@ -93,7 +104,8 @@ const photos = [
     photographer: "Ralf Schultheis",
     title: "IR Bangkok #16",
     year: "2019",
-    price: 340
+    price: 340,
+    quantity: 0
   },
   {
     id: 13,
@@ -101,7 +113,8 @@ const photos = [
     photographer: "Sheila Brogan",
     title: "Construction #37",
     year: "2016",
-    price: 380
+    price: 380,
+    quantity: 0
   },
   {
     id: 14,
@@ -109,7 +122,8 @@ const photos = [
     photographer: "Sofia Ilves",
     title: "Kitchen Still Life",
     year: "2012",
-    price: 390
+    price: 390,
+    quantity: 0
   },
   {
     id: 15,
@@ -117,7 +131,8 @@ const photos = [
     photographer: "Bruno Jurado",
     title: "Untitled #58",
     year: "2013",
-    price: 365
+    price: 365,
+    quantity: 0
   }
 ]
 

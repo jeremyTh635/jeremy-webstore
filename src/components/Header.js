@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 function Header() {
-  const userName = useSelector(state => state.user.userName);
+  const userName = useSelector(state => state.user.currentUser.userName);
   console.log(userName);
   return (
     <div>
