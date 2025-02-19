@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 function Header() {
-  const userName = useSelector(state => state.user.currentUser.userName);
+  const userName = useSelector(state => state.user.user?.userName);
   console.log(userName);
   return (
     <div>
@@ -16,11 +16,12 @@ function Header() {
             <Nav.Link as={Link} to="/">HOME</Nav.Link>
             <Nav.Link as={Link} to="/products">PRODUCTS</Nav.Link>
             <Nav.Link as={Link} to="/cart">YOUR CART</Nav.Link>
+            <Nav.Link as={Link} to="/register">REGISTER</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-      <div>
-        <h3>Welcome:&nbsp;&nbsp;&nbsp;{userName}</h3>
+      <div className="displayUsername">
+        <h3><span>Welcome:</span>&nbsp;&nbsp;&nbsp;{userName}</h3>
       </div>
     </div>
   );

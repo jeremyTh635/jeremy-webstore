@@ -13,25 +13,16 @@ const Login = ({ show, handleClose, navigate }) => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
       userName: "",
-      email: "",
       password: "",
     },
 
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Required"),
-      lastName: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
+
       userName: Yup.string()
         .min(8, "Must not be less than 8 characters")
         .max(20, "Must not be more than 20 characters")
         .required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string()
         .min(8, "Password must be at least 8 characters long")
         .matches(/[0-9]/, "Password must contain a number")
@@ -40,15 +31,8 @@ const Login = ({ show, handleClose, navigate }) => {
         .matches(/[^\w]/, "Password must contain a special character")
         .required("Required"),
     }),
-    onSubmit: (values) => {
-      const payload = {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        userName: values.userName,
-        email: values.email,
-        password: values.password,
-      };
-      dispatch(loginUser(payload));
+    onSubmit: (values, actions) => {
+      dispatch(loginUser(values, actions));
       console.log(state);
     },
   });
@@ -62,34 +46,6 @@ const Login = ({ show, handleClose, navigate }) => {
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group>
-              <Form.Label htmlFor="firstName">First Name</Form.Label>
-              <Form.Control
-                id="firstName"
-                name="firstName"
-                type="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.firstName}
-              />
-
-              {formik.touched.firstName && formik.errors.firstName ? (
-                <div>{formik.errors.firstName}</div>
-              ) : null}
-
-              <Form.Label htmlFor="lastName">Last Name</Form.Label>
-              <Form.Control
-                id="lastName"
-                name="lastName"
-                type="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.lastName}
-              />
-
-              {formik.touched.firstName && formik.errors.lastName ? (
-                <div>{formik.errors.lastName}</div>
-              ) : null}
-
               <Form.Label htmlFor="userName">Username</Form.Label>
               <Form.Control
                 id="userName"
@@ -102,20 +58,6 @@ const Login = ({ show, handleClose, navigate }) => {
 
               {formik.touched.firstName && formik.errors.userName ? (
                 <div>{formik.errors.userName}</div>
-              ) : null}
-
-              <Form.Label htmlFor="email">Email</Form.Label>
-              <Form.Control
-                id="email"
-                name="email"
-                type="email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-              />
-
-              {formik.touched.firstName && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
               ) : null}
 
               <Form.Label htmlFor="password">Password</Form.Label>
