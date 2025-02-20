@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../store/cartState";
+import { removeFromCart, addShipping } from "../store/cartState";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,20 +20,18 @@ function Cart() {
   const handleClose = () => setShow(false);
 
   const handleRemoveFromCart = (item) => {
-    console.log(item);
     dispatch(removeFromCart(item));
   };
 
-  let premium = 25;
-  let standard = 12;
-
   const addPremium = () => {
-    state.totalPrice += premium * state.cart.length;
+    dispatch(addShipping(25));
   };
 
   const addStandard = () => {
-    state.totalPrice += standard * state.cart.length;
-  }
+    dispatch(addShipping(12));
+  };
+
+  console.log(state.cart);
 
   return (
     <div>
@@ -65,6 +63,7 @@ function Cart() {
                   Quantity:&nbsp;&nbsp;&nbsp;{item.quantity}
                 </Card.Text>
                 <Card.Subtitle>£{item.price}</Card.Subtitle>
+
                 <Button
                   variant="dark"
                   onClick={() => handleRemoveFromCart(item)}
@@ -90,39 +89,45 @@ function Cart() {
           <Col></Col>
         </Row>
       </Container>
-      <Modal show={show} onHide={handleClose} style={{color: "black"}}>
+      <Modal show={show} onHide={handleClose} style={{ color: "black", marginLeft: "30px" }}>
         <Modal.Header>
           <Modal.Title>About Shipping Costs</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>
-              We offer our customers two choices for shipping. The first is
-              Premium which guarantees next-day delivery at a cost of £25 per
-              item.</p>
-              <p>Alternatively, you may choose Standard delivery which costs £12 per item and usually takes about four days.</p>
-              <p>You can select your delivery type below. </p>
-              <Form>
-                {['radio'].map((type) => (
-                  <div key={`default-${type}`} className="mb-3">
-                    <Form.Check
-                     type={type}
-                     id="premium"
-                     label="Premium"
-                     onClick={addPremium}
-                    />
-                    <Form.Check
-                      type={type}
-                      id="standard"
-                      label="Standard"
-                      onClick={addStandard}
-                    />
-                  </div>
-                ))}
-              </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="dark" onClick={handleClose}>Close</Button>
-          </Modal.Footer>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            We offer our customers two choices for shipping. The first is
+            Premium which guarantees next-day delivery at a cost of £25 per
+            item.
+          </p>
+          <p>
+            Alternatively, you may choose Standard delivery which costs £12 per
+            item and usually takes about four days.
+          </p>
+          <p>You can select your delivery type below. </p>
+        </Modal.Body>
+        <Form style={{marginLeft: "60px"}}>
+            {["radio"].map((type) => (
+              <div key={`default-${type}`} className="mb-3">
+                <Form.Check
+                  type={type}
+                  id="premium"
+                  label="Premium"
+                  onClick={addPremium}
+                />
+                <Form.Check
+                  type={type}
+                  id="standard"
+                  label="Standard"
+                  onClick={addStandard}
+                />
+              </div>
+            ))}
+          </Form>
+        <Modal.Footer>
+          <Button variant="dark" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

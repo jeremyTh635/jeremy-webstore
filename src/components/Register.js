@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,9 +10,10 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const Register = ({ navigate }) => {
+const Register = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -45,19 +47,32 @@ const Register = ({ navigate }) => {
     onSubmit: (values, actions) => {
       dispatch(registerUser(values, actions));
       console.log(state.users);
+      navigate("/");
     },
   });
 
   return (
     <div>
-      <h4>Please Enter Your Details Below</h4>
+       <style type="text/css">
+                {`
+              .btn-flat {
+                background-color: mediumvioletred;
+                color: white;
+              }
+              .btn-xl {
+                padding: 0.5rem 1rem;
+                font-size: 1rem
+              }
+            `}
+              </style>
+      <h4 style={{marginBottom: "3rem"}}>Please Enter Your Details Below</h4>
       <Container>
         <Row>
           <Col></Col>
           <Col>
             <Form onSubmit={formik.handleSubmit}>
               <Form.Group>
-                <Form.Label htmlFor="firstName" className="justify-content-start">First Name</Form.Label>
+                <Form.Label htmlFor="firstName" style={{display: "flex", justifyContent: "flex-start"}}>First Name</Form.Label>
                 <Form.Control
                   id="firstName"
                   name="firstName"
@@ -71,7 +86,7 @@ const Register = ({ navigate }) => {
                   <div>{formik.errors.firstName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="lastName">Last Name</Form.Label>
+                <Form.Label htmlFor="lastName" style={{display: "flex", justifyContent: "flex-start"}}>Last Name</Form.Label>
                 <Form.Control
                   id="lastName"
                   name="lastName"
@@ -85,7 +100,7 @@ const Register = ({ navigate }) => {
                   <div>{formik.errors.lastName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="userName">Username</Form.Label>
+                <Form.Label htmlFor="userName" style={{display: "flex", justifyContent: "flex-start"}}>Username</Form.Label>
                 <Form.Control
                   id="userName"
                   name="userName"
@@ -99,7 +114,7 @@ const Register = ({ navigate }) => {
                   <div>{formik.errors.userName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="email">Email</Form.Label>
+                <Form.Label htmlFor="email" style={{display: "flex", justifyContent: "flex-start"}}>Email</Form.Label>
                 <Form.Control
                   id="email"
                   name="email"
@@ -113,7 +128,7 @@ const Register = ({ navigate }) => {
                   <div>{formik.errors.email}</div>
                 ) : null}
 
-                <Form.Label htmlFor="password">Password</Form.Label>
+                <Form.Label htmlFor="password" style={{display: "flex", justifyContent: "flex-start"}}>Password</Form.Label>
                 <Form.Control
                   id="password"
                   name="password"
@@ -127,7 +142,8 @@ const Register = ({ navigate }) => {
                   <div>{formik.errors.password}</div>
                 ) : null}
                 <Button
-                  variant="secondary"
+                  variant="flat"
+                  size="xl"
                   type="submit"
                   style={{ textAlign: "center" }}
                   className="loginButton"

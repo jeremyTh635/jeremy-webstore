@@ -38,8 +38,11 @@ const cartSlice = createSlice({
       }
       state.totalPrice -= findItem.price;
     },
+    addShipping(state, action) {
+      state.totalPrice += state.cart.length * action.payload;
+    }
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, addShipping } = cartSlice.actions;
 export default cartSlice.reducer;

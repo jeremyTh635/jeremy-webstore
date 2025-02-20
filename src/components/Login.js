@@ -34,6 +34,7 @@ const Login = ({ show, handleClose, navigate }) => {
     onSubmit: (values, actions) => {
       dispatch(loginUser(values, actions));
       console.log(state);
+      handleClose();
     },
   });
 
@@ -76,18 +77,13 @@ const Login = ({ show, handleClose, navigate }) => {
               <Button
                 variant="secondary"
                 type="submit"
-                style={{ textAlign: "center" }}
+                style={{ marginTop: "1rem" }}
               >
                 Submit
               </Button>
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer style={{ justifyContent: "center" }}>
-          <Button variant="dark" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );
