@@ -15,6 +15,7 @@ function Cart() {
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
+  const [disabled, setDisabled] = useState(false)
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -24,18 +25,22 @@ function Cart() {
   };
 
   const addPremium = () => {
-    dispatch(addShipping(25));
+    dispatch(addShipping(12));
+    setDisabled(true);
   };
 
   const addStandard = () => {
-    dispatch(addShipping(12));
+    dispatch(addShipping(6));
+    setDisabled(true);
   };
 
-  console.log(state.cart);
 
   return (
     <div>
-      <Container>
+      <div  className="mainHead">
+        <h1>Your Cart</h1>
+      </div>
+      <Container style={{marginTop: "50px"}}>
         <Row>
           <Col></Col>
           <Col>
@@ -85,37 +90,44 @@ function Cart() {
               />
             </button>
             <p style={{ fontSize: "12px" }}>Read about shipping details here</p>
+
           </Col>
           <Col></Col>
         </Row>
       </Container>
-      <Modal show={show} onHide={handleClose} style={{ color: "black", marginLeft: "30px" }}>
+      <Modal show={show} onHide={handleClose} style={{ color: "black" }}>
         <Modal.Header>
           <Modal.Title>About Shipping Costs</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
             We offer our customers two choices for shipping. The first is
-            Premium which guarantees next-day delivery at a cost of £25 per
+            Premium which guarantees next-day delivery at a cost of £12 per
             item.
           </p>
           <p>
-            Alternatively, you may choose Standard delivery which costs £12 per
+            Alternatively, you may choose Standard delivery which costs £6 per
             item and usually takes about four days.
           </p>
           <p>You can select your delivery type below. </p>
         </Modal.Body>
         <Form style={{marginLeft: "60px"}}>
             {["radio"].map((type) => (
-              <div key={`default-${type}`} className="mb-3">
+              <div key={`inline-${type}`} className="mb-3">
                 <Form.Check
+                  inline
+                  disabled={disabled}
                   type={type}
+                  name="group1"
                   id="premium"
                   label="Premium"
                   onClick={addPremium}
                 />
                 <Form.Check
+                  inline
+                  disabled={disabled}
                   type={type}
+                  name="group1"
                   id="standard"
                   label="Standard"
                   onClick={addStandard}

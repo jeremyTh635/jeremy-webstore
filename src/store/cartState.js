@@ -27,6 +27,7 @@ const cartSlice = createSlice({
         })
       }
       state.totalPrice += newItem.price;
+
     },
 
     removeFromCart(state, action) {
@@ -39,8 +40,9 @@ const cartSlice = createSlice({
       state.totalPrice -= findItem.price;
     },
     addShipping(state, action) {
-      state.totalPrice += state.cart.length * action.payload;
-    }
+        state.cart.forEach((item) => item.price += action.payload )
+        state.totalPrice = state.totalPrice + state.cart.length * action.payload;
+    },
   },
 });
 

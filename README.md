@@ -1,71 +1,19 @@
-# Getting Started with Create React App
+# About my webstore app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This site was developed as the final project in the front-end/React component of Hyperion.Dev’s web development bootcamp. The following are the instructions for using the app and information regarding how to download and install it.
 
-## Available Scripts
+## Using the app
 
-In the project directory, you can run:
+The app was conceived as an online which sells high quality framed photographs. The landing page displays the name of the store, a carousel of what the store sells and some information about the store. The user will be asked to register. They can do so by selecting REGISTER from the top menu which will take them to the registration page. After entering their first name, last name, a username, their email and a password, clicking submit will return them to the landing page automatically without having to click HOME from the top menu.
 
-### `npm start`
+Once there, the user can log in with their username and password. Clicking the login button will bring up a pop-up and clicking ‘Submit’ will display the user’s username at the top right of the screen and will take them directly to the products page without having to select PRODUCTS from the top menu.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The products page displays the what the store has to sell along with names of the photographers, titles, years and prices in £ Sterling. Clicking the ‘Add to Cart’ button will add the picture to the cart as well as take the user directly to the cart page.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The ‘Your Cart’ page displays cards containing the picture, its title, the quantity of that picture the user would like to order, and the price. The card has a ‘Remove from Cart’ button at the bottom should the user change their mind. If the user wants to add additional pictures or copies of the same photo, they need to return to the products page using the top menu and add them from there. Multiple copies of the same picture will increase the quantity on the card. The page displays the total price of the items in the cart to the right of the cards. As items are added, the total price updates.
 
-### `npm test`
+Beneath the total price, there is an info icon. Clicking on this will bring up a pop-up which explains the shipping options with their prices. There are also two radio buttons which allow the user to select which option they’d like. Clicking either one adds the shipping cost to the card as well as to the total price.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Viewing the code and installing the app
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# jeremy-webstore
+The code which I wrote to develop the app can be found in my GitHub repo [here](https://github.com/jeremyTh635/jeremy-webstore/tree/main). It can be downloaded by selecting the ‘Download zip’ option from dropdown under the green ‘Code’ button at the top of the page.

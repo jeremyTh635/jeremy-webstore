@@ -19,7 +19,10 @@ function Products() {
   }
   return (
     <div>
-      <Container style={{ marginLeft: "150px", marginRight: "auto" }}>
+      <div className="mainHead">
+        <h1>Our Products</h1>
+      </div>
+      <Container style={{ marginLeft: "150px", marginRight: "auto", marginTop: "50px" }}>
         <Row>
           {photos.map((item) => (
             <Card
