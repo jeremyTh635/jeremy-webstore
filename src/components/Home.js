@@ -1,27 +1,37 @@
+// Imports for React functionality
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// Import photos for carousel
 import photos from "./photos";
+// Import Bootstrap modules for UI
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
+// Import Login for prop sharing
 import Login from "./Login";
 
 function Home() {
+  // Use Navigate to send user directly to Products
   const navigate = useNavigate();
+
+  // Initial state for Login modal
   const [show, setShow] = useState(false);
+
+  // Functions to control visibility of Login modal
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
     navigate("/products");
-  }
+  };
 
   return (
     <div>
       <Container>
         <Row>
+          {/* Main title and header for app */}
           <div className="mainHead">
             <h1>Brandon & Lewis</h1>
             <h3>Dealers In Fine Art Photography Since 2008</h3>
@@ -31,6 +41,7 @@ function Home() {
           <Col></Col>
           <Col>
             <Carousel
+              // Attributes for carousel
               controls={false}
               indicators={false}
               style={{
@@ -41,6 +52,7 @@ function Home() {
                 paddingTop: "2rem",
               }}
             >
+              {/* Carousel items */}
               <Carousel.Item>
                 <img src={photos[0].image} alt={photos[0].title} height={300} />
               </Carousel.Item>
@@ -113,6 +125,7 @@ function Home() {
         <Row>
           <Col></Col>
           <Col>
+            {/* information about company & webstore */}
             <div className="about">
               <p>
                 Brandon & Lewis are proud to present to a selection of
@@ -121,7 +134,7 @@ function Home() {
                 top-quality photographic paper, measure 20x16" and come matted
                 and framed in stylish aluminium. The mat also bears the personal
                 signature of the artist. To find out more about our photographs
-                —including their prices — and order prints, please log in below
+                —including their prices — and order prints, please go to the Register page from the top menu, then log in below
                 and you will be sent directly to our Products page.
               </p>
             </div>
@@ -131,6 +144,7 @@ function Home() {
         <Row>
           <Col></Col>
           <Col>
+            {/* Style attributes for login button */}
             <div className="loginButton">
               <style type="text/css">
                 {`
@@ -144,6 +158,7 @@ function Home() {
               }
             `}
               </style>
+              {/* Button to bring up login modal */}
               <Button variant="flat" size="xl" onClick={handleShow}>
                 Login
               </Button>
@@ -152,6 +167,8 @@ function Home() {
           <Col></Col>
         </Row>
       </Container>
+
+      {/* Pass props to Login.js */}
       <Login show={show} handleClose={handleClose} navigate={navigate} />
     </div>
   );

@@ -1,3 +1,4 @@
+// Source for Products and Cart
 const photos = [
   {
     id: 1,

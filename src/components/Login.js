@@ -1,16 +1,21 @@
+// Import React
 import React from "react";
+// Import Formik and Yup for form management & validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useSelector, useDispatch } from "react-redux";
+// Imports from react-redux to update user state
+import { useDispatch } from "react-redux";
 import { loginUser } from "../store/userState";
+// Bootstrap imports for form UI
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const Login = ({ show, handleClose, navigate, buttonText, setButtonText }) => {
+// Declare Login function with props
+const Login = ({ show, handleClose, navigate }) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.user);
 
+  // Initial Formik values
   const formik = useFormik({
     initialValues: {
       userName: "",
@@ -18,7 +23,7 @@ const Login = ({ show, handleClose, navigate, buttonText, setButtonText }) => {
     },
 
     validationSchema: Yup.object({
-
+      // Yup validations
       userName: Yup.string()
         .min(8, "Must not be less than 8 characters")
         .max(20, "Must not be more than 20 characters")
@@ -31,9 +36,10 @@ const Login = ({ show, handleClose, navigate, buttonText, setButtonText }) => {
         .matches(/[^\w]/, "Password must contain a special character")
         .required("Required"),
     }),
+
+    // Actions to perform on submission of form
     onSubmit: (values, actions) => {
       dispatch(loginUser(values, actions));
-      console.log(state);
       handleClose();
     },
   });
@@ -45,6 +51,7 @@ const Login = ({ show, handleClose, navigate, buttonText, setButtonText }) => {
           <Modal.Title>Login Here</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* Formik handles all data submitted by user */}
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group>
               <Form.Label htmlFor="userName">Username</Form.Label>

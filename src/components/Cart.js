@@ -1,7 +1,10 @@
+// Import React
 import React from "react";
 import { useState } from "react";
+// Imports to add functionality to page
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, addShipping } from "../store/cartState";
+// Imports from Bootstrap for UI
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,19 +14,25 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function Cart() {
+  // Variables for useSelector and useDispatch
   const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
+  // State variable to show/hide modal
   const [show, setShow] = useState(false);
-  const [disabled, setDisabled] = useState(false)
+  // State variable to disable radio buttons after selecting shipping
+  const [disabled, setDisabled] = useState(false);
 
+  // Functions to show/hide modal
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  // Function to remove items from cart
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item));
   };
 
+  // Functions to add shipping with payload & disable radio buttons
   const addPremium = () => {
     dispatch(addShipping(12));
     setDisabled(true);
@@ -34,13 +43,14 @@ function Cart() {
     setDisabled(true);
   };
 
-
   return (
     <div>
-      <div  className="mainHead">
+      <div className="mainHead">
+        {/* Page heading */}
         <h1>Your Cart</h1>
+        {/* Map method to generate cart item cards  */}
       </div>
-      <Container style={{marginTop: "50px"}}>
+      <Container style={{ marginTop: "50px" }}>
         <Row>
           <Col></Col>
           <Col>
@@ -79,9 +89,12 @@ function Cart() {
             ))}
           </Col>
           <Col>
+            {/* Code to display total price of cart */}
             <h3>Total Price:&nbsp;&nbsp;&nbsp;£{state.totalPrice}</h3>
             <br />
             <br />
+
+            {/* Button to display shipping information */}
             <button className="infoButton" onClick={handleShow}>
               <img
                 src="images/info_icon_white.png"
@@ -89,8 +102,8 @@ function Cart() {
                 width={40}
               />
             </button>
+            {/* Explanation of button for user */}
             <p style={{ fontSize: "12px" }}>Read about shipping details here</p>
-
           </Col>
           <Col></Col>
         </Row>
@@ -111,30 +124,32 @@ function Cart() {
           </p>
           <p>You can select your delivery type below. </p>
         </Modal.Body>
-        <Form style={{marginLeft: "60px"}}>
-            {["radio"].map((type) => (
-              <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                  inline
-                  disabled={disabled}
-                  type={type}
-                  name="group1"
-                  id="premium"
-                  label="Premium"
-                  onClick={addPremium}
-                />
-                <Form.Check
-                  inline
-                  disabled={disabled}
-                  type={type}
-                  name="group1"
-                  id="standard"
-                  label="Standard"
-                  onClick={addStandard}
-                />
-              </div>
-            ))}
-          </Form>
+
+        {/* Form to add cost of shipping */}
+        <Form style={{ marginLeft: "60px" }}>
+          {["radio"].map((type) => (
+            <div key={`inline-${type}`} className="mb-3">
+              <Form.Check
+                inline
+                disabled={disabled}
+                type={type}
+                name="group1"
+                id="premium"
+                label="Premium"
+                onClick={addPremium}
+              />
+              <Form.Check
+                inline
+                disabled={disabled}
+                type={type}
+                name="group1"
+                id="standard"
+                label="Standard"
+                onClick={addStandard}
+              />
+            </div>
+          ))}
+        </Form>
         <Modal.Footer>
           <Button variant="dark" onClick={handleClose}>
             Close

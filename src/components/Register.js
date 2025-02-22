@@ -1,9 +1,14 @@
+// Import React
 import React from "react";
+// UseNavigate to send user back to Home after registering
 import { useNavigate } from "react-router-dom";
+// Imports for form management and validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
+// Imports from Redux and store for form functionality
 import { useSelector, useDispatch } from "react-redux";
 import { registerUser } from "../store/userState";
+// Imports from Bootstrap for UI
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,10 +16,12 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const Register = () => {
+  // Variables for page functionality
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
   const navigate = useNavigate();
 
+  // Initial formik values
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -24,6 +31,7 @@ const Register = () => {
       password: "",
     },
 
+    // Yup validation scheme
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(15, "Must be 15 characters or less")
@@ -44,6 +52,8 @@ const Register = () => {
         .matches(/[^\w]/, "Password must contain a special character")
         .required("Required"),
     }),
+
+    // Actions to take place on submit
     onSubmit: (values, actions) => {
       dispatch(registerUser(values, actions));
       console.log(state.users);
@@ -53,8 +63,9 @@ const Register = () => {
 
   return (
     <div>
-       <style type="text/css">
-                {`
+      {/* Style for submit button */}
+      <style type="text/css">
+        {`
               .btn-flat {
                 background-color: mediumvioletred;
                 color: white;
@@ -64,15 +75,23 @@ const Register = () => {
                 font-size: 1rem
               }
             `}
-              </style>
-      <h4 style={{marginBottom: "3rem"}}>Please Enter Your Details Below</h4>
+      </style>
+
+      {/* Heading for form */}
+      <h4 style={{ marginBottom: "3rem" }}>Please Enter Your Details Below</h4>
       <Container>
         <Row>
           <Col></Col>
           <Col>
+            {/* Form managed by Formik */}
             <Form onSubmit={formik.handleSubmit}>
               <Form.Group>
-                <Form.Label htmlFor="firstName" style={{display: "flex", justifyContent: "flex-start"}}>First Name</Form.Label>
+                <Form.Label
+                  htmlFor="firstName"
+                  style={{ display: "flex", justifyContent: "flex-start" }}
+                >
+                  First Name
+                </Form.Label>
                 <Form.Control
                   id="firstName"
                   name="firstName"
@@ -86,7 +105,12 @@ const Register = () => {
                   <div>{formik.errors.firstName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="lastName" style={{display: "flex", justifyContent: "flex-start"}}>Last Name</Form.Label>
+                <Form.Label
+                  htmlFor="lastName"
+                  style={{ display: "flex", justifyContent: "flex-start" }}
+                >
+                  Last Name
+                </Form.Label>
                 <Form.Control
                   id="lastName"
                   name="lastName"
@@ -100,7 +124,12 @@ const Register = () => {
                   <div>{formik.errors.lastName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="userName" style={{display: "flex", justifyContent: "flex-start"}}>Username</Form.Label>
+                <Form.Label
+                  htmlFor="userName"
+                  style={{ display: "flex", justifyContent: "flex-start" }}
+                >
+                  Username
+                </Form.Label>
                 <Form.Control
                   id="userName"
                   name="userName"
@@ -114,7 +143,12 @@ const Register = () => {
                   <div>{formik.errors.userName}</div>
                 ) : null}
 
-                <Form.Label htmlFor="email" style={{display: "flex", justifyContent: "flex-start"}}>Email</Form.Label>
+                <Form.Label
+                  htmlFor="email"
+                  style={{ display: "flex", justifyContent: "flex-start" }}
+                >
+                  Email
+                </Form.Label>
                 <Form.Control
                   id="email"
                   name="email"
@@ -128,7 +162,12 @@ const Register = () => {
                   <div>{formik.errors.email}</div>
                 ) : null}
 
-                <Form.Label htmlFor="password" style={{display: "flex", justifyContent: "flex-start"}}>Password</Form.Label>
+                <Form.Label
+                  htmlFor="password"
+                  style={{ display: "flex", justifyContent: "flex-start" }}
+                >
+                  Password
+                </Form.Label>
                 <Form.Control
                   id="password"
                   name="password"
